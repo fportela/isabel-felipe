@@ -72,12 +72,51 @@
     .lang-link.active {
       box-shadow: 0 0 0 2px rgba(184, 149, 90, 0.22);
     }
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    /* --- DESKTOP STYLES (Your current setup) --- */
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Hide the hamburger button on desktop by default */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* --- MOBILE STYLES (Under 768px) --- */
+@media (max-width: 768px) {
+  /* Show the hamburger button */
+  .menu-toggle {
+    display: block;
+    margin-right: 1.5rem;
+  }
+
+  /* Turn the links into a vertical, hidden-by-default drawer */
+  .nav-links {
+    display: none; /* Hide it initially */
+    flex-direction: column;
+    gap: 1.5rem;
+    position: absolute;
+    top: 60px; /* Adjust based on your header height */
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* Match your site's background */
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 100;
+  }
+
+  /* When JS adds the 'active' class, show the menu */
+  .nav-links.active {
+    display: flex;
+  }
+}
     nav a {
       color: var(--mid);
       text-decoration: none;
@@ -86,89 +125,130 @@
     nav a:hover { color: var(--gold); }
 
     /* HERO */
-    .hero {
-      min-height: 80vh;
-      display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;
-      text-align: left;
-      padding: 2rem 2rem 4rem 4rem;
-      position: relative;
-      overflow: hidden;
-      scroll-margin-top: 7rem;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(184,149,90,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero > * {
-      position: relative;
-      z-index: 1;
-    }
-    .hero-date {
-      font-size: 1.3rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-top: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .hero-names {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(5rem, 13.5vw, 9.3rem);
-      font-weight: 300;
-      line-height: 1.05;
-      color: var(--dark);
-    }
-    .hero-names em {
-      font-style: italic;
-      color: var(--gold);
-    }
-    .hero-ampersand {
-      display: inline-block;
-      font-size: 0.6em;
-      color: var(--light);
-      margin: 0 0.5rem;
-      vertical-align: middle;
-    }
-    .hero-sub {
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
-      color: var(--mid);
-    }
-    .hero-divider {
-      width: 80px; height: 1px;
-      background: var(--gold);
-      margin: 2.5rem 0;
-      /*margin-left: 4rem; */
-      opacity: 0.5;
-    }
-    .countdown {
-      display: flex; gap: 2rem;
-      justify-content: center;  .hero-divider {
-      width: 200px; height: 1px;
-      background: var(--gold);
-      margin: 2.5rem 0;
-      opacity: 0.5;
-    }
-      margin-top: 0.5rem;
-    }
-    .countdown-unit { text-align: center; }
-    .countdown-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.95rem;
-      font-weight: 300;
-      color: var(--dark);
-      line-height: 1;
-    }
-    .countdown-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-top: 0.3rem;
-    }
+/* --- YOUR EXISTING HERO STYLES (Keep exactly as they are) --- */
+.hero {
+  min-height: 80vh;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;
+  text-align: left;
+  padding: 2rem 2rem 4rem 4rem;
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 7rem;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(184,149,90,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+.hero-date {
+  font-size: 1.3rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+.hero-names {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(5rem, 13.5vw, 9.3rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--dark);
+}
+.hero-names em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-ampersand {
+  display: inline-block;
+  font-size: 0.6em;
+  color: var(--light);
+  margin: 0 0.5rem;
+  vertical-align: middle;
+}
+.hero-sub {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: var(--mid);
+}
+.hero-divider {
+  width: 200px; height: 1px;
+  background: var(--gold);
+  margin: 2.5rem 0;
+  opacity: 0.5;
+}
+.countdown {
+  display: flex; gap: 2rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+.countdown-unit { text-align: center; }
+.countdown-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.95rem;
+  font-weight: 300;
+  color: var(--dark);
+  line-height: 1;
+}
+.countdown-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-top: 0.3rem;
+}
+
+/* --- ADD THIS MOBILE OVERRIDE SECTION BELOW YOUR CURRENT STYLES --- */
+@media (max-width: 768px) {
+  .hero {
+    align-items: center;    /* Centers flexbox items (like the divider and countdown) */
+    text-align: center;     /* Centers inline text (like names, dates, subtext) */
+    padding: 3rem 1.5rem;   /* evens out the padding so it's uniform on mobile sides */
+  }
+
+  /* Force names and ampersand onto separate lines */
+  .hero-names em,
+  .hero-names .hero-ampersand {
+    display: block;
+  }
+
+  /* Loosen up the spacing slightly so the large stacked letters don't crash */
+  .hero-names {
+    line-height: 1.2; 
+  }
+
+  /* Clean up the ampersand margins for vertical stacking */
+  .hero-ampersand {
+    margin: 0.5rem 0;
+  }
+
+  /* Ensures the divider stays centered horizontally */
+  .hero-divider {
+    margin: 2.5rem auto;
+  }
+
+  body {
+    background-color: transparent; 
+    background-image: linear-gradient(rgba(250, 247, 242, 0.5), rgba(250, 247, 242, 0.5)), url('images/Save the date.png');
+    
+    /* 1. This pins the image so it behaves exactly like desktop when scrolling */
+    background-attachment: fixed; 
+    
+    /* 2. Shifting it slightly more down to account for the wider size scale */
+    background-position: center 6.5rem; 
+    
+    /* 3. Bumping this past 100% makes the artwork look wider and grander on mobile */
+    background-size: 140%;
+    
+    background-repeat: no-repeat;
+  }
+}
 
     /* SECTIONS */
     section {
@@ -625,14 +705,17 @@
     <a href="index.html" class="lang-link active" aria-label="English">🇬🇧</a>
     <a href="index-pt.html" class="lang-link" aria-label="Português">🇵🇹</a>
   </div>
+
+  <button class="menu-toggle" aria-label="Toggle menu">
+    ☰
+  </button>
+
   <div class="nav-links">
     <a href="#hero">Home</a>
     <a href="#rsvp">RSVP</a>
-    <!-- FULL VERSION NAV LINKS (remove for simple RSVP-only version) -->
     <a href="#coming-soon">Wedding Party</a>
     <a href="#coming-soon">Travel</a>
     <a href="#coming-soon">Things to do</a>
-    <!-- END FULL VERSION NAV LINKS -->
     <a href="#coming-soon">About us</a>
   </div>
 </nav>
@@ -827,7 +910,7 @@
 </section>
 
 <footer>
-  Made with love by Isabel & Felipe (with a little help of AI) ❤️
+  ❤️
 </footer>
 
 <script>
@@ -1304,6 +1387,19 @@
       ? `Thank you for confirming attendance for ${guests.adults.length + guests.children.length + 1}, we can't wait to celebrate with you!`
       : `Thank you for letting us know!`;
   }
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  // Optional: Close the menu when a link is clicked (great for one-page wedding sites)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
 </script>
 </body>
 </html>

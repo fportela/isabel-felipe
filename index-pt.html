@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Isabel & Felipe — 26 de junho de 2027</title>
+  <title>Isabel & Felipe — 26 de Junho de 2027</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -72,12 +72,47 @@
     .lang-link.active {
       box-shadow: 0 0 0 2px rgba(184, 149, 90, 0.22);
     }
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    /* --- DESKTOP STYLES --- */
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* --- MOBILE STYLES --- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    margin-right: 1.5rem;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 100;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
     nav a {
       color: var(--mid);
       text-decoration: none;
@@ -86,89 +121,117 @@
     nav a:hover { color: var(--gold); }
 
     /* HERO */
-    .hero {
-      min-height: 80vh;
-      display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;
-      text-align: left;
-      padding: 2rem 2rem 4rem 4rem;
-      position: relative;
-      overflow: hidden;
-      scroll-margin-top: 7rem;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(184,149,90,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero > * {
-      position: relative;
-      z-index: 1;
-    }
-    .hero-date {
-      font-size: 1.3rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-top: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .hero-names {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(5rem, 13.5vw, 9.3rem);
-      font-weight: 300;
-      line-height: 1.05;
-      color: var(--dark);
-    }
-    .hero-names em {
-      font-style: italic;
-      color: var(--gold);
-    }
-    .hero-ampersand {
-      display: inline-block;
-      font-size: 0.6em;
-      color: var(--light);
-      margin: 0 0.5rem;
-      vertical-align: middle;
-    }
-    .hero-sub {
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
-      color: var(--mid);
-    }
-    .hero-divider {
-      width: 80px; height: 1px;
-      background: var(--gold);
-      margin: 2.5rem 0;
-      /*margin-left: 4rem; */
-      opacity: 0.5;
-    }
-    .countdown {
-      display: flex; gap: 2rem;
-      justify-content: center;  .hero-divider {
-      width: 200px; height: 1px;
-      background: var(--gold);
-      margin: 2.5rem 0;
-      opacity: 0.5;
-    }
-      margin-top: 0.5rem;
-    }
-    .countdown-unit { text-align: center; }
-    .countdown-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.95rem;
-      font-weight: 300;
-      color: var(--dark);
-      line-height: 1;
-    }
-    .countdown-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-top: 0.3rem;
-    }
+.hero {
+  min-height: 80vh;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;
+  text-align: left;
+  padding: 2rem 2rem 4rem 4rem;
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 7rem;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(184,149,90,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+.hero-date {
+  font-size: 1.3rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+.hero-names {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(5rem, 13.5vw, 9.3rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--dark);
+}
+.hero-names em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-ampersand {
+  display: inline-block;
+  font-size: 0.6em;
+  color: var(--light);
+  margin: 0 0.5rem;
+  vertical-align: middle;
+}
+.hero-sub {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: var(--mid);
+}
+.hero-divider {
+  width: 200px; height: 1px;
+  background: var(--gold);
+  margin: 2.5rem 0;
+  opacity: 0.5;
+}
+.countdown {
+  display: flex; gap: 2rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+.countdown-unit { text-align: center; }
+.countdown-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.95rem;
+  font-weight: 300;
+  color: var(--dark);
+  line-height: 1;
+}
+.countdown-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    align-items: center;
+    text-align: center;
+    padding: 3rem 1.5rem;
+  }
+
+  .hero-names em,
+  .hero-names .hero-ampersand {
+    display: block;
+  }
+
+  .hero-names {
+    line-height: 1.2; 
+  }
+
+  .hero-ampersand {
+    margin: 0.5rem 0;
+  }
+
+  .hero-divider {
+    margin: 2.5rem auto;
+  }
+
+  body {
+    background-color: transparent; 
+    background-image: linear-gradient(rgba(250, 247, 242, 0.5), rgba(250, 247, 242, 0.5)), url('images/Save the date.png');
+    background-attachment: fixed; 
+    background-position: center 6.5rem; 
+    background-size: 140%;
+    background-repeat: no-repeat;
+  }
+}
 
     /* SECTIONS */
     section {
@@ -625,14 +688,17 @@
     <a href="index.html" class="lang-link" aria-label="English">🇬🇧</a>
     <a href="index-pt.html" class="lang-link active" aria-label="Português">🇵🇹</a>
   </div>
+
+  <button class="menu-toggle" aria-label="Abrir menu">
+    ☰
+  </button>
+
   <div class="nav-links">
     <a href="#hero">Início</a>
     <a href="#rsvp">RSVP</a>
-    <!-- FULL VERSION NAV LINKS (remove for simple RSVP-only version) -->
-    <a href="#coming-soon">Festa de casamento</a>
+    <a href="#coming-soon">Padrinhos & Cortejo</a>
     <a href="#coming-soon">Viagem</a>
     <a href="#coming-soon">O que fazer</a>
-    <!-- END FULL VERSION NAV LINKS -->
     <a href="#coming-soon">Sobre nós</a>
   </div>
 </nav>
@@ -640,7 +706,7 @@
 <!-- HERO -->
 <header id="hero" class="hero">
   <h1 class="hero-names"><em>Isabel</em><span class="hero-ampersand">&</span><em>Felipe</em></h1>
-  <p class="hero-date">26 de junho de 2027 | Mosteiro de Amares, Portugal</p>
+  <p class="hero-date">26 de Junho de 2027 | Mosteiro de Amares, Portugal</p>
   <div class="hero-divider"></div>
   <div class="countdown" id="countdown">
     <div class="countdown-unit"><div class="countdown-num" id="cd-days">—</div><div class="countdown-label">Dias</div></div>
@@ -650,50 +716,49 @@
 </header>
 
 <!-- ============================================
-     FULL VERSION SECTIONS (comment out for simple RSVP-only version)
+     SEÇÃO DE VERSÃO COMPLETA (Caso decidas ativar no futuro)
      ============================================ -->
 <!--
 <section id="about">
-  <p class="section-label">A Nossa História</p>
+  <p class="section-label">A nossa história</p>
   <h2 class="section-title">Como tudo <em>começou</em></h2>
-  <p>Escreve aqui a vossa história de amor — onde se conheceram, uma memória especial, ou o que vos faz sorrir. Os convidados vão adorar ler isto antes do grande dia.</p>
-  <p>Podes adicionar tantos parágrafos quantos quiseres. Altera os nomes, as datas e o local em toda esta página para corresponder aos detalhes do vosso casamento.</p>
+  <p>Escreve aqui a vossa história de amor — onde se conheceram, uma memória favorita ou o que quer que vos faça sorrir. Os convidados vão adorar ler isto antes do grande dia.</p>
+  <p>Podes adicionar quantos parágrafos quiseres. Altera os nomes, datas e locais em toda a página para corresponderem aos detalhes do teu casamento.</p>
 </section>
 
 <section id="details" style="padding-top:0">
-  <p class="section-label">A Festa</p>
+  <p class="section-label">O Casamento</p>
   <h2 class="section-title">O que esperar</h2>
   <div class="details-grid">
     <div class="detail-card">
       <div class="detail-icon">🕐</div>
       <div class="detail-title">Cerimónia</div>
-      <p class="detail-body">15h00<br/>Villa Corsini, Florença</p>
+      <p class="detail-body">15:00<br/>Mosteiro de Amares</p>
     </div>
     <div class="detail-card">
       <div class="detail-icon">🥂</div>
       <div class="detail-title">Receção</div>
-      <p class="detail-body">18h00<br/>Jardins do Terraço</p>
+      <p class="detail-body">18:00<br/>Jardins do Mosteiro</p>
     </div>
     <div class="detail-card">
       <div class="detail-icon">🌸</div>
       <div class="detail-title">Dress Code</div>
-      <p class="detail-body">Garden Party<br/>Traje Formal</p>
+      <p class="detail-body">Festa de Jardim<br/>Traje Formal</p>
     </div>
     <div class="detail-card">
       <div class="detail-icon">📅</div>
-      <div class="detail-title">RSVP até</div>
-      <p class="detail-body">1 de maio de 2026</p>
+      <div class="detail-title">Confirmar até</div>
+      <p class="detail-body">1 de Maio de 2026</p>
     </div>
   </div>
 </section>
 -->
-<!-- END FULL VERSION SECTIONS -->
 
-<!-- RSVP (appears in both simple and full versions) -->
+<!-- RSVP -->
 <section class="rsvp-wrapper">
   <div class="boxed-section save-date-box">
-    <h2 class="section-title save-date-title">Guarda a data!</h2>
-    <h2 class="section-title save-date-date">26 de junho de 2027</h2>
+    <h2 class="section-title save-date-title">Reserva a data!</h2>
+    <h2 class="section-title save-date-date">26 de Junho de 2027</h2>
     <div class="calendar-actions">
       <a class="calendar-btn google" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Isabel+%26+Felipe%27s+wedding!&dates=20270626T150000/20270626T190000&location=Mosteiro+de+Amares,+Portugal&ctz=Europe/Lisbon" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.316 5.684H24v12.632h-5.684V5.684zM5.684 24h12.632v-5.684H5.684V24zM18.316 5.684V0H1.895A1.894 1.894 0 0 0 0 1.895v16.421h5.684V5.684h12.632zm-7.207 6.25v-.065c.272-.144.5-.349.687-.617s.279-.595.279-.982c0-.379-.099-.72-.3-1.025a2.05 2.05 0 0 0-.832-.714 2.703 2.703 0 0 0-1.197-.257c-.6 0-1.094.156-1.481.467-.386.311-.65.671-.793 1.078l1.085.452c.086-.249.224-.461.413-.633.189-.172.445-.257.767-.257.33 0 .602.088.816.264a.86.86 0 0 1 .322.703c0 .33-.12.589-.36.778-.24.19-.535.284-.886.284h-.567v1.085h.633c.407 0 .748.109 1.02.327.272.218.407.499.407.843 0 .336-.129.614-.387.832s-.565.327-.924.327c-.351 0-.651-.103-.897-.311-.248-.208-.422-.502-.521-.881l-1.096.452c.178.616.505 1.082.977 1.401.472.319.984.478 1.538.477a2.84 2.84 0 0 0 1.293-.291c.382-.193.684-.458.902-.794.218-.336.327-.72.327-1.149 0-.429-.115-.797-.344-1.105a2.067 2.067 0 0 0-.881-.689zm2.093-1.931l.602.913L15 10.045v5.744h1.187V8.446h-.827l-2.158 1.557zM22.105 0h-3.289v5.184H24V1.895A1.894 1.894 0 0 0 22.105 0zm-3.289 23.5l4.684-4.684h-4.684V23.5zM0 22.105C0 23.152.848 24 1.895 24h3.289v-5.184H0v3.289z"/></svg>Google Calendar</a>
       <a class="calendar-btn outlook" href="https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject=Isabel+%26+Felipe%27s+wedding!&startdt=2027-06-26T15:00:00&enddt=2027-06-26T19:00:00&location=Mosteiro+de+Amares,+Portugal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.88 12.04q0 .45-.11.87-.1.41-.33.74-.22.33-.58.52-.37.2-.87.2t-.85-.2q-.35-.21-.57-.55-.22-.33-.33-.75-.1-.42-.1-.86t.1-.87q.1-.43.34-.76.22-.34.59-.54.36-.2.87-.2t.86.2q.35.21.57.55.22.34.31.77.1.43.1.88zM24 12v9.38q0 .46-.33.8-.33.32-.8.32H7.13q-.46 0-.8-.33-.32-.33-.32-.8V18H1q-.41 0-.7-.3-.3-.29-.3-.7V7q0-.41.3-.7Q.58 6 1 6h6.5V2.55q0-.44.3-.75.3-.3.75-.3h12.9q.44 0 .75.3.3.3.3.75V10.85l1.24.72h.01q.1.07.18.18.07.12.07.25zm-6-8.25v3h3v-3zm0 4.5v3h3v-3zm0 4.5v1.83l3.05-1.83zm-5.25-9v3h3.75v-3zm0 4.5v3h3.75v-3zm0 4.5v2.03l2.41 1.5 1.34-.8v-2.73zM9 3.75V6h2l.13.01.12.04v-2.3zM5.98 15.98q.9 0 1.6-.3.7-.32 1.19-.86.48-.55.73-1.28.25-.74.25-1.61 0-.83-.25-1.55-.24-.71-.71-1.24t-1.15-.83q-.68-.3-1.55-.3-.92 0-1.64.3-.71.3-1.2.85-.5.54-.75 1.3-.25.74-.25 1.63 0 .85.26 1.56.26.72.74 1.23.48.52 1.17.81.69.3 1.56.3zM7.5 21h12.39L12 16.08V17q0 .41-.3.7-.29.3-.7.3H7.5zm15-.13v-7.24l-5.9 3.54Z"/></svg>Outlook</a>
@@ -702,8 +767,8 @@
   </div>
   <div id="rsvp">
     <p class="section-label">RSVP</p>
-    <h2 class="section-title">Vens <em>festejar connosco?</em></h2>
-    <p style="margin-bottom:2rem;">Por favor confirma a tua presença até 30 de janeiro de 2027.</p>
+    <h2 class="section-title">Vais <em>juntar-te a nós?</em></h2>
+    <p style="margin-bottom:2rem;">Por favor, diz-nos algo até 30 de Janeiro de 2027.</p>
 
   <div id="rsvp-form">
 
@@ -714,20 +779,20 @@
         <input type="text" id="f-name" placeholder="Nome completo" />
       </div>
       <div class="form-group">
-        <label>Email <span class="req">*</span></label>
+        <label>E-mail <span class="req">*</span></label>
         <input type="email" id="f-email" placeholder="tu@exemplo.com" />
       </div>
     </div>
 
     <!-- Attending? -->
     <div class="form-group">
-      <label>Vais estar presente? <span class="req">*</span></label>
+      <label>Vais comparecer? <span class="req">*</span></label>
       <div class="radio-group">
         <label class="radio-opt" id="opt-yes" onclick="setAttending(true)">
           <input type="radio" name="attending" value="yes" /> Claro que sim!
         </label>
         <label class="radio-opt" id="opt-no" onclick="setAttending(false)">
-          <input type="radio" name="attending" value="no" /> Infelizmente, não...
+          <input type="radio" name="attending" value="no" /> Infelizmente não...
         </label>
       </div>
     </div>
@@ -760,15 +825,13 @@
             <div id="children-list" class="guest-list"></div>
           </div>
         </div>
-
-        <!-- Live summary -->
       </div>
 
       <!-- Dietary restrictions -->
       <div class="form-group">
-        <label>Há restrições alimentares?</label>
+        <label>Alguma restrição alimentar?</label>
         <div>
-          <div style="margin-bottom:.5rem;">Restrições alimentares?</div>
+          <div style="margin-bottom:.5rem;">Tens restrições lineares/alimentares?</div>
           <div class="radio-group" style="gap:.5rem;">
             <label class="radio-opt-small selected" id="diet-no" onclick="setDietary(false)"><input type="radio" name="dietary-reqs" checked/>Não</label>
             <label class="radio-opt-small" id="diet-yes" onclick="setDietary(true)"><input type="radio" name="dietary-reqs"/>Sim</label>
@@ -780,7 +843,7 @@
             <label class="radio-opt-small selected" id="diet-you-no" onclick="setPersonDietary(false)"><input type="radio" name="diet-you" checked/>Não</label>
             <label class="radio-opt-small" id="diet-you-yes" onclick="setPersonDietary(true)"><input type="radio" name="diet-you"/>Sim</label>
           </div>
-          <input type="text" id="diet-you-input" placeholder="Ex.: sem glúten, alergia a frutos secos, sem lactose, sem marisco, halal, vegetariano, vegan, ..." oninput="updateSummary()" style="width:100%; margin-bottom:.75rem; display:none;" />
+          <input type="text" id="diet-you-input" placeholder="ex: Sem glúten, Alergia a frutos secos, Sem laticínios, Vegetariano, Vegan, ..." oninput="updateSummary()" style="width:100%; margin-bottom:.75rem; display:none;" />
           <div id="per-guest-dietary"></div>
         </div>
       </div>
@@ -788,14 +851,14 @@
       <!-- Song request -->
       <div class="form-group">
         <label>Pedido de música para a pista de dança 🎵</label>
-        <input type="text" id="f-song" placeholder="Faz-nos dançar ao som de..."/>
+        <input type="text" id="f-song" placeholder="Põe-nos a dançar com..."/>
       </div>
     </div>
 
     <!-- Message -->
     <div class="form-group">
       <label>Deixa-nos uma mensagem</label>
-      <textarea id="f-message" placeholder="(palavras carinhosas, um pedido, uma memória, um conselho...)"></textarea>
+      <textarea id="f-message" placeholder="(votos de felicidade, uma partilha, uma memória, um conselho...)"></textarea>
     </div>
 
     <div id="rsvp-summary" class="guest-summary" style="margin-bottom:2rem;">
@@ -806,7 +869,7 @@
       <div id="dietary-entries" style="margin-top:.75rem; font-size:.95rem; line-height:1.4;"></div>
     </div>
     <div id="rsvp-status" class="status-message"></div>
-    <button class="btn-submit" onclick="submitRSVP()">Enviar RSVP</button>
+    <button class="btn-submit" onclick="submitRSVP()">Enviar Resposta</button>
   </div>
 
   <!-- Confirmation screen -->
@@ -820,14 +883,14 @@
 
 <section id="coming-soon">
   <div class="boxed-section">
-    <p class="section-label">Em breve</p>
+    <p class="section-label">Novidades em breve</p>
     <h2 class="section-title">Esta secção está em construção</h2>
-    <p>O RSVP é a única página ativa por agora. Usa o link de RSVP na navegação para responder ao convite de casamento.</p>
+    <p>O RSVP é a única página ativa de momento. Por favor, utiliza o link de RSVP no menu para responderes ao convite de casamento.</p>
   </div>
 </section>
 
 <footer>
-  Feito com amor por Isabel & Felipe (com uma ajudinha da IA) ❤️
+  ❤️
 </footer>
 
 <script>
@@ -841,7 +904,7 @@
       nextDay.setDate(nextDay.getDate() + 1);
       nextDay.setHours(6, 0, 0, 0);
       if (now >= nextDay) {
-        document.getElementById('countdown').innerHTML = '<p style="color:var(--gold);letter-spacing:.15em">Obrigado por terem vindo!</p>';
+        document.getElementById('countdown').innerHTML = '<p style="color:var(--gold);letter-spacing:.15em">Obrigado por vires!</p>';
       } else {
         document.getElementById('countdown').innerHTML = '<p style="color:var(--gold);letter-spacing:.15em">Está a acontecer! 🎉</p>';
       }
@@ -859,7 +922,8 @@
 
   // --- Delivery settings ---
   const rsvpRecipient = 'felipe.alves.portela@gmail.com';
-  const rsvpWebhook = 'https://script.google.com/macros/s/AKfycbx4uCCyGOYgPLSW0xnj5mHfY0I1hdVKHlT3DrnUGJGwvd2rsIpWOuAo6kjQBBMd4BmwGg/exec';
+  const rsvpWebhook = 'https://script.google.com/macros/s/AKfycbx4uCCyGOYgPLSW0xnj5mHfY0I1hdVKHlT3DrnUGJGwvd2rsIpWOuAo6kjQBBMd4BmwGg/exec'; 
+
   // --- Attending toggle ---
   let attending = null;
   let dietaryRequired = false;
@@ -908,7 +972,7 @@
       const input = document.createElement('input');
       input.type = 'text';
       input.dataset.dietId = person.id;
-      input.placeholder = 'Ex.: sem glúten, alergia a frutos secos, sem lactose, sem marisco, halal, vegetariano, vegan, ...';
+      input.placeholder = 'ex: Sem glúten, Alergia a frutos secos, Vegan...';
       input.style.display = 'none';
       input.style.width = '100%';
       input.style.marginTop = '.4rem';
@@ -1070,7 +1134,7 @@
       }
     });
 
-    const adultsCount = guests.adults.length + 1;
+    const adultsCount = guests.adults.length + 1; 
     const childrenCount = guests.children.length;
     const total = adultsCount + childrenCount;
 
@@ -1105,14 +1169,13 @@
     if (dietaryLines.length) {
       dietaryEntries.innerHTML = dietaryLines.map(line => `<div>${line}</div>`).join('');
     } else {
-      dietaryEntries.innerHTML = '<div>Nenhuma restrição alimentar adicionada.</div>';
+      dietaryEntries.innerHTML = '<div>Nenhuma restrição alimentar foi adicionada.</div>';
     }
 
     const summary = document.getElementById('rsvp-summary');
     if (summary) summary.classList.toggle('visible', attending === true);
   }
 
-  // --- Checkbox toggles ---
   function toggleCheck(event, el) {
     event.preventDefault();
     const input = el.querySelector('input');
@@ -1129,18 +1192,18 @@
 
   function buildCSV(data) {
     const rows = [];
-    rows.push(['Campo', 'Valor'].join(','));
-    rows.push(['Nome', escapeCSV(data.name)].join(','));
+    rows.push(['Field', 'Value'].join(','));
+    rows.push(['Name', escapeCSV(data.name)].join(','));
     rows.push(['Email', escapeCSV(data.email)].join(','));
-    rows.push(['Presença', escapeCSV(data.attending ? 'Sim' : 'Não')].join(','));
+    rows.push(['Attending', escapeCSV(data.attending ? 'Yes' : 'No')].join(','));
     if (data.attending) {
-      rows.push(['Adultos (incluindo o/a convidado/a)', escapeCSV(guests.adults.length + 1)].join(','));
-      rows.push(['Crianças', escapeCSV(guests.children.length)].join(','));
-      rows.push(['Restrições alimentares', escapeCSV(data.dietary.join('; '))].join(','));
-      rows.push(['Pedido de música', escapeCSV(data.song)].join(','));
-      rows.push(['Mensagem', escapeCSV(data.message)].join(','));
+      rows.push(['Adults (including guest)', escapeCSV(guests.adults.length + 1)].join(','));
+      rows.push(['Children', escapeCSV(guests.children.length)].join(','));
+      rows.push(['Dietary restrictions', escapeCSV(data.dietary.join('; '))].join(','));
+      rows.push(['Song request', escapeCSV(data.song)].join(','));
+      rows.push(['Message', escapeCSV(data.message)].join(','));
       rows.push([]);
-      rows.push(['Convidado principal', 'Nome do convidado', 'Idade', 'Restrições alimentares', 'Presença'].join(','));
+      rows.push(['Main guest', 'Guest name', 'Age', 'Dietary', 'Attending'].join(','));
       if (data.entries && data.entries.length) {
         data.entries.forEach(entry => {
           rows.push([
@@ -1148,15 +1211,15 @@
             escapeCSV(entry.guest_name),
             escapeCSV(entry.age),
             escapeCSV(entry.dietary),
-            escapeCSV(data.attending ? 'Sim' : 'Não')
+            escapeCSV(data.attending ? 'Yes' : 'No')
           ].join(','));
         });
       } else {
         guests.adults.forEach(guest => {
-          rows.push(['', escapeCSV(guest.name), 'adulto', escapeCSV(guest.dietary || 'Não'), escapeCSV(data.attending ? 'Sim' : 'Não')].join(','));
+          rows.push(['', escapeCSV(guest.name), 'adult', escapeCSV(guest.dietary || 'No'), escapeCSV(data.attending ? 'Yes' : 'No')].join(','));
         });
         guests.children.forEach(guest => {
-          rows.push(['', escapeCSV(guest.name), escapeCSV(guest.age || 'Criança'), escapeCSV(guest.dietary || 'Não'), escapeCSV(data.attending ? 'Sim' : 'Não')].join(','));
+          rows.push(['', escapeCSV(guest.name), escapeCSV(guest.age || 'Child'), escapeCSV(guest.dietary || 'No'), escapeCSV(data.attending ? 'Yes' : 'No')].join(','));
         });
       }
     }
@@ -1190,13 +1253,13 @@
     });
     return true;
   } catch (error) {
-    showStatus(`Não foi possível contactar o servidor: ${error.message}`, 'error');
+    showStatus(`Não foi possível ligar ao servidor: ${error.message}`, 'error');
     return false;
   }
 }
 
   function sendCSVByEmail(csv, subject) {
-    const body = ['Segue em anexo os detalhes do RSVP (CSV):', '', csv].join('\r\n');
+    const body = ['Detalhes do RSVP abaixo (CSV):', '', csv].join('\r\n');
     const mailto = `mailto:${rsvpRecipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
   }
@@ -1205,8 +1268,8 @@
   async function submitRSVP() {
     const name = document.getElementById('f-name').value.trim();
     const email = document.getElementById('f-email').value.trim();
-    if (!name || !email) { alert('Por favor, introduz o teu nome e email.'); return; }
-    if (attending === null) { alert('Por favor, indica se podes estar presente.'); return; }
+    if (!name || !email) { alert('Por favor, introduz o teu nome e e-mail.'); return; }
+    if (attending === null) { alert('Por favor, diz-nos se vais comparecer.'); return; }
 
     const collectedDiet = [];
     if (dietaryRequired) {
@@ -1225,23 +1288,23 @@
 
     const mainDiet = (dietaryRequired && document.getElementById('diet-you-yes')?.classList.contains('selected') && document.getElementById('diet-you-input')?.value.trim())
       ? document.getElementById('diet-you-input').value.trim()
-      : 'Não';
+      : 'No';
 
     const entries = [{
       main_guest: name,
       guest_name: '',
-      age: 'adulto',
+      age: 'adult',
       dietary: mainDiet,
-      attending: attending ? 'Sim' : 'Não'
+      attending: attending ? 'Yes' : 'No'
     }];
 
     guests.adults.forEach((g) => {
       entries.push({
         main_guest: name,
         guest_name: g.name || 'Convidado',
-        age: 'adulto',
-        dietary: g.dietaryActive && g.dietary?.trim() ? g.dietary.trim() : 'Não',
-        attending: attending ? 'Sim' : 'Não'
+        age: 'adult',
+        dietary: g.dietaryActive && g.dietary?.trim() ? g.dietary.trim() : 'No',
+        attending: attending ? 'Yes' : 'No'
       });
     });
 
@@ -1250,8 +1313,8 @@
         main_guest: name,
         guest_name: g.name || 'Criança',
         age: g.age || 'Criança',
-        dietary: g.dietaryActive && g.dietary?.trim() ? g.dietary.trim() : 'Não',
-        attending: attending ? 'Sim' : 'Não'
+        dietary: g.dietaryActive && g.dietary?.trim() ? g.dietary.trim() : 'No',
+        attending: attending ? 'Yes' : 'No'
       });
     });
 
@@ -1263,7 +1326,6 @@
       song: document.getElementById('f-song')?.value,
       message: document.getElementById('f-message').value
     };
-    console.log('RSVP enviado:', data);
 
     const success = rsvpWebhook ? await sendToWebhook(data) : true;
     if (!success) {
@@ -1279,12 +1341,24 @@
     const conf = document.getElementById('confirmation');
     conf.classList.add('visible');
     document.getElementById('conf-title').textContent = attending
-      ? `Estamos mesmo ansiosos, ${name}!`
-      : `Vais fazer muita falta, ${name}...`;
+      ? `Estamos muito entusiasmados, ${name}!`
+      : `Vamos sentir a tua falta, ${name}...`;
     document.getElementById('conf-body').textContent = attending
-      ? `Obrigado por confirmares a presença de ${guests.adults.length + guests.children.length + 1}, mal podemos esperar para celebrar convosco!`
-      : `Obrigado por nos teres avisado!`;
+      ? `Obrigado por confirmares a presença de ${guests.adults.length + guests.children.length + 1}, mal podemos esperar para celebrar contigo!`
+      : `Obrigado por nos avisares!`;
   }
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
 </script>
 </body>
 </html>
