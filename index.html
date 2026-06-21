@@ -34,6 +34,21 @@
       padding-top: 4.5rem;
     }
 
+    /* Mobile background layer — injected by JS */
+    #mobile-bg {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('images/Save the date.png');
+      background-size: 140%;
+      background-repeat: no-repeat;
+      background-position: center 6.5rem;
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
@@ -222,12 +237,17 @@
         margin: 2.5rem auto;
       }
       body {
-        background-color: transparent; 
-        background-image: linear-gradient(rgba(250, 247, 242, 0.5), rgba(250, 247, 242, 0.5)), url('images/Save the date.png');
-        background-attachment: fixed; 
-        background-position: center 6.5rem; 
-        background-size: 140%;
-        background-repeat: no-repeat;
+        background-image: none;
+      }
+      #mobile-bg {
+        display: block;
+      }
+      section {
+        background: rgba(250, 247, 242, 0.98);
+      }
+      .save-date-container,
+      .rsvp-container {
+        background: rgba(250, 247, 242, 0.98) !important;
       }
     }
 
@@ -236,7 +256,7 @@
       max-width: 760px;
       margin: 5rem auto; 
       padding: 5rem 2rem;
-      background: rgba(250, 247, 242, 0.95);
+      background: rgba(250, 247, 242, 0.90);
       position: relative;
       z-index: 2;
     }
@@ -340,20 +360,24 @@
 
     /* INDEPENDENT SEPARATION STRUCTURES */
     .save-date-container {
-      background: rgba(250, 247, 242, 0.95);
+      background: rgba(250, 247, 242, 0.90);
       border-radius: 4px;
       padding: 5rem 2rem;
       max-width: 760px;
       margin: 5rem auto;
       text-align: center;
+      position: relative;
+      z-index: 2;
     }
     
     .rsvp-container {
-      background: rgba(250, 247, 242, 0.95);
+      background: rgba(250, 247, 242, 0.90);
       border-radius: 4px;
       padding: 5rem 2rem;
       max-width: 760px;
       margin: 5rem auto;
+      position: relative;
+      z-index: 2;
     }
 
     .save-date-title {
@@ -510,6 +534,8 @@
   </style>
 </head>
 <body>
+
+<div id="mobile-bg"></div>
 
 <nav>
   <div class="lang-switcher">
@@ -1086,6 +1112,30 @@
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+  // Mobile background: fade-in on scroll + iOS fixed workaround
+  (function() {
+    const mobileBg = document.getElementById('mobile-bg');
+    if (!mobileBg) return;
+
+    function isMobile() { return window.innerWidth <= 768; }
+
+    // Fade starts at 0, reaches full opacity after scrolling ~40% of viewport height
+    function updateBg() {
+      if (!isMobile()) return;
+      const scrollY = window.scrollY || window.pageYOffset;
+      const fadeOver = window.innerHeight * 0.4;
+      const opacity = Math.min(scrollY / fadeOver, 1);
+      mobileBg.style.opacity = opacity;
+
+      // iOS fixed-position workaround: manually track scroll to simulate fixed bg
+      mobileBg.style.backgroundPositionY = (6.5 * 16 - scrollY * 0.0) + 'px';
+    }
+
+    window.addEventListener('scroll', updateBg, { passive: true });
+    window.addEventListener('resize', updateBg, { passive: true });
+    updateBg();
+  })();
 </script>
 </body>
 </html>
